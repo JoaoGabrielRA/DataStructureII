@@ -1,4 +1,3 @@
-#%%file stack.py
 from linkedlist import *
 
 class Stack(LinkedList):
