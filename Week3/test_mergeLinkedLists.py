@@ -13,13 +13,14 @@ def mergeLinkedLists(linkedList_one, linkedList_two):
   Returns:
       LinkedList: The merged linked list, with its head updated to reflect the new head of the merged list.
   """
-      
+
+ # Define a cabeça das duas listas encadeadas e seus comprimentos
   head1 = linkedList_one.head
   head2 = linkedList_two.head
-
   len1 = linkedList_one.length
   len2 = linkedList_two.length
 
+  # Define a cabeça da nova lista encadeada, escolhendo o menor valor entre as duas listas encadeadas
   if head1.data < head2.data:
       new_head = head1
       head1 = head1.next
@@ -27,9 +28,9 @@ def mergeLinkedLists(linkedList_one, linkedList_two):
       new_head = head2
       head2 = head2.next
 
-  # Configura um ponteiro para o último nó adicionado na LinkedList unida
+  # Define o ponteiro atual como a cabeça da nova lista encadeada
   current = new_head
-  
+
   # Percorre as duas LinkedLists simultaneamente, adicionando sempre o menor elemento na nova LinkedList
   while head1 and head2:
       if head1.data < head2.data:
@@ -39,33 +40,16 @@ def mergeLinkedLists(linkedList_one, linkedList_two):
           current.next = head2
           head2 = head2.next
       current = current.next
-  
-  # Adiciona o restante da LinkedList não percorrida (se houver)
+
+  # Adiciona o restante da LinkedList não percorrida
   current.next = head1 if head1 else head2
-  
-  # Retorna a cabeça da nova LinkedList (ignorando o nó vazio criado)
+
+  # Atualiza a cabeça da primeira lista encadeada para a nova lista encadeada
   linkedList_one.head   = new_head
   linkedList_one.length = len1 + len2
-    
+
+  # Retorna a nova lista encadeada combinada e ordenada
   return linkedList_one
-
-
-# array =[]
-# array.append([[2,6,7,8],[1,3,4,5,9,10]])
-# linkedlist_one = LinkedList()
-# for item in array[0][0]:
-#     linkedlist_one.append(item)
-
-# linkedlist_two = LinkedList()
-# for item in array[0][1]:
-#     linkedlist_two.append(item)
-
-# linkedlist_test = LinkedList()
-# for item in [1,2,3,4,5,6,7,8,9,10]:
-#     linkedlist_test.append(item)
-
-# merged = mergeLinkedLists(linkedlist_one, linkedlist_two) 
-# print(merged)
 
 @pytest.fixture(scope="session")
 def data():

@@ -18,7 +18,6 @@ def sunsetViews(buildings, direction):
     """
     result = Stack()
     higher_building = 0
-    i = 0
     if direction == 'WEST':
         for values in buildings:
             if values > higher_building:
@@ -29,7 +28,7 @@ def sunsetViews(buildings, direction):
             if buildings[i] > higher_building:
                 higher_building = buildings[i]
                 result.push(i)        
-            
+    
     return sorted(list(result))
 
 
